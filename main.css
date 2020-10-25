@@ -1,3 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header {
+  text-align: center;
+  background-color: cadetblue;
+  padding: 50px;
+}
+
+.title {
+  color: white;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.form {
+  padding: 30px;
+}
+
+.favorites__section {
+  padding: 25px;
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  align-content: space-between;
+  background: linear-gradient(to bottom, rgb(0, 238, 255), white);
+}
+
+.button {
+  padding: 10px;
+  background-color: white;
+  color: #3341ff;
+  border-color: #3341ff;
+}
+
+.input__search {
+  padding: 10px;
+}
+
+.subtitle {
+  color: #3341ff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* JavaScript */
+
 .favoriteColor {
   background-color: aqua;
+}
+
+.listShow__item {
+  margin-top: 90px;
 }

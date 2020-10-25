@@ -34,66 +34,99 @@ getData();
 
 function paintShows() {
   let showContent = "";
-  showContent = "<ul>";
   for (let i = 0; i < shows.length; i++) {
-    showContent += `<li class="js-itemShow" id="${i}">`;
-    if (shows[i].show.image != null) {
+    /*  let classFav;
+    const indexClass = shows.find((click) => {
+      if (parseInt(click.show.id) === shows[i].show.id) return click;
+    });
+    if (indexClass === false) {
+      classFav = "favoriteColor";
+    } else {
+      classFav = "";
+    } */
+    showContent += `<li class="js-itemShow listShow__item" id="${shows[i].show.id}">`;
+    if (shows[i].show.image !== null) {
       let image = shows[i].show.image.medium;
       showContent += `<img src="${image}" alt="image show" title="image show" />`;
     } else {
-      image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
       showContent += `<img src="${image}" alt="image show" title="image show" />`;
     }
     showContent += `<h2>${shows[i].show.name}</h2>`;
     showContent += "</li>";
   }
-  showContent += "</ul>";
-  listShows.innerHTML += showContent;
-}
-
-// Pintar favoritos
-
-const favList = document.querySelector(".js-listFavorites");
-
-function paintFavorites() {
-  console.log("Hola, favoritos");
-
-  favContent = "";
-  favContent = "<ul>";
-
-  for (let i = 0; i < favorites.lengt; i++) {
-    favContent += `<li class="js-favItem" id="${i}">`;
-    if (favorites[i].show.image != null) {
-      let imageFav = shows[i].show.image.medium;
-      favContent += `<img src="${imageFav}" alt="image show" title="image show" />`;
-    } else {
-      imageFav = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
-      favContent += `<img src="${image}" alt="image show" title="image show" />`;
-    }
-    favContent += `<h2>${shows[i].show.name}</h2>`;
-    favContent += "</li>";
-  }
-  favContent += "</ul>";
-  favList.innerHTML += favContent;
+  listShows.innerHTML = showContent;
 }
 
 // Añadir favoritos
 
 function addFavorites(ev) {
   const clicked = parseInt(ev.currentTarget.id);
+  const indexFav = favorites.findIndex((click) => {
+    if (parseInt(click.show.id) === clicked) return click;
+  });
+  if (indexFav === -1) {
+    const foundFav = shows.find((click) => {
+      if (parseInt(click.show.id) === clicked) {
+        return click;
+      }
+    });
+    favorites.push(foundFav);
+  } else {
+    favorites.splice(indexFav, 1);
+  }
+  paintShows();
+  listenShows();
+  paintFavorites();
+}
+//Itziar
+
+/* function addFavorites(ev) {
+  console.log(ev.currentTarget);
+  const clicked = parseInt(ev.currentTarget.id);
   const indexFav = favorites.indexOf(clicked);
   const isFavorite = indexFav !== -1;
   console.log(isFavorite);
 
   if (isFavorite === false) {
-    favorites.push(clicked);
-    clicked.classList.add("favoriteColor");
+    for (const item of shows) {
+      console.log(clicked);
+      if (parseInt(item.show.id) === clicked) {
+        favorites.push(item);
+        console.log(favorites);
+      }
+    }
   } else {
-    favorites.splice(indexFav, 1);
-    clicked.classList.remove("favoriteColor");
+    const index = favorites.findIndex((click) => {
+      if (parseInt(item.show.id) === clicked) {
+        return click;
+      }
+    });
+    favorites.splice(index, 1);
   }
-
+  paintShows();
+  //paintFavorites();
   listenShows();
+} */
+
+// Pintar favoritos
+
+function paintFavorites() {
+  const favList = document.querySelector(".js-listFavorites");
+  let favContent = "";
+  for (let i = 0; i < favorites.length; i++) {
+    favContent += `<li class="js-itemShow" id="${favorites[i].show.id}">`;
+    if (favorites[i].show.image !== null) {
+      let image = favorites[i].show.image.medium;
+      favContent += `<img src="${image}" alt="image show" title="image show" />`;
+    } else {
+      let image = "https://via.placeholder.com/210x295/ffffff/666666/?text=TV";
+      showContent += `<img src="${image}" alt="image show" title="image show" />`;
+    }
+    favContent += `<h2>${favorites[i].show.name}</h2>`;
+    favContent += "</li>";
+  }
+  favList.innerHTML = favContent;
 }
 
 // Función que escucha el evento
@@ -104,3 +137,5 @@ function listenShows() {
     itemShow.addEventListener("click", addFavorites);
   }
 }
+
+// Local Storage
