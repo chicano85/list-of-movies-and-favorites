@@ -6,6 +6,8 @@ const btnSearch = document.querySelector(".js-buttonSearch");
 
 const inputSearch = document.querySelector(".js-inputSearch");
 
+const resetBtn = document.querySelector(".js-reset");
+
 let shows = [];
 let favorites = [];
 
@@ -78,6 +80,7 @@ function addFavorites(ev) {
   paintShows();
   listenShows();
   paintFavorites();
+  setLocalStorage();
 }
 //Itziar
 
@@ -115,7 +118,7 @@ function paintFavorites() {
   const favList = document.querySelector(".js-listFavorites");
   let favContent = "";
   for (let i = 0; i < favorites.length; i++) {
-    favContent += `<li class="js-itemShow" id="${favorites[i].show.id}">`;
+    favContent += `<li class="js-itemShow fav__show" id="${favorites[i].show.id}">`;
     if (favorites[i].show.image !== null) {
       let image = favorites[i].show.image.medium;
       favContent += `<img src="${image}" alt="image show" title="image show" />`;
@@ -139,3 +142,66 @@ function listenShows() {
 }
 
 // Local Storage
+
+// Guardar datos
+
+const setLocalStorage = () => {
+  const stringFav = JSON.stringify(favorites);
+  localStorage.setItem("fav", stringFav);
+};
+
+// Leer Datos
+
+const getLocalStorage = () => {
+  const localStorageFav = localStorage.getItem("fav");
+  if (localStorageFav !== null) {
+    favorites = JSON.parse(localStorageFav);
+    paintFavorites();
+  }
+};
+
+getLocalStorage();
+
+/* function setLocalStorage() {
+  const hola = JSON.stringify(favorites);
+  localStorage.setItem("LocalFavorites", hola);
+}
+
+// Traer datos
+
+function getLocalStorage() {
+  favorites = JSON.parse(localStorage.getItem("localfavorites"));
+  if (favorites === null) {
+    favorites = [];
+  }
+  paintShows();
+  paintFavorites();
+}
+getLocalStorage(); */
+
+// Reset
+
+function resetFav() {
+  favorites.splice(1, favorites.length);
+  favorites = [];
+  localStorage.clear();
+  paintFavorites();
+}
+
+function resetItemFavorites(ev) {
+  favorites.splice(indexItemFav, 1);
+  paintFavorites();
+  setLocalStorage();
+}
+resetItemFavorites();
+
+resetBtn.addEventListener("click", resetFav);
+
+function trashFav() {
+  const resetItems = document.querySelectorAll(".js-reset-items");
+  console.log(resetItems);
+  for (const resetItem of resetItems) {
+    console.log(resetItem);
+    resetItem.addEventListener("click", resetItemFavorites);
+  }
+}

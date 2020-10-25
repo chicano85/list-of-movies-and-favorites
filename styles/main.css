@@ -31,7 +31,7 @@
   background: linear-gradient(to bottom, rgb(0, 238, 255), white);
 }
 
-.button {
+.buttonSearch {
   padding: 10px;
   background-color: white;
   color: #3341ff;
@@ -47,6 +47,16 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.favorites__section--reset {
+  padding: 10px;
+}
+
+.list__show {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* JavaScript */
 
 .favoriteColor {
@@ -54,5 +64,9 @@
 }
 
 .listShow__item {
-  margin-top: 90px;
+  margin: 90px 10px 0 10px;
+}
+
+.fav__show {
+  border: red 2px solid;
 }
