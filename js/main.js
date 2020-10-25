@@ -46,7 +46,7 @@ function paintShows() {
     } else {
       classFav = "";
     } */
-    showContent += `<li class="js-itemShow listShow__item" id="${shows[i].show.id}">`;
+    showContent += `<li class="js-itemShow list__Shows--item" id="${shows[i].show.id}">`;
     if (shows[i].show.image !== null) {
       let image = shows[i].show.image.medium;
       showContent += `<img src="${image}" alt="image show" title="image show" />`;
@@ -82,7 +82,6 @@ function addFavorites(ev) {
   paintFavorites();
   setLocalStorage();
 }
-//Itziar
 
 /* function addFavorites(ev) {
   console.log(ev.currentTarget);
@@ -118,7 +117,7 @@ function paintFavorites() {
   const favList = document.querySelector(".js-listFavorites");
   let favContent = "";
   for (let i = 0; i < favorites.length; i++) {
-    favContent += `<li class="js-itemShow fav__show" id="${favorites[i].show.id}">`;
+    favContent += `<li class="js-itemShow list__Shows--item fav__show" id="${favorites[i].show.id}">`;
     if (favorites[i].show.image !== null) {
       let image = favorites[i].show.image.medium;
       favContent += `<img src="${image}" alt="image show" title="image show" />`;

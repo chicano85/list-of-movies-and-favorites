@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bucador de series - Evaluación final</title>
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/main.css" />
 </head>
 <body>
@@ -12,22 +11,22 @@
     <h1 class="title">Buscador de series</h1>
   </header>
   <main class="main">
-  <div class= div__section>
-  <section class="search__section">
+    <div class= div__section>
+    <section class="search__section">
       <form method="GET" class="form">
         <input type="text" name="search" id="search" class=" input__search js-inputSearch">
-        <button type="button" id="btnSearch" class=" buttonSearch js-buttonSearch">Search</button>
+        <button type="button" id="btnSearch" class=" button__search js-buttonSearch">Search</button>
       </form>
     </section>
-    <section class="results__section">
-      <ul class="js-listShows list__show"></ul>
+    <section>
+      <ul class="js-listShows list__shows"></ul>
     </div>
   </section>
 <section class="favorites__section">
       <h2 class="subtitle">Mis series favoritas</h2>
-      <ul class="js-listFavorites">
+      <ul class="js-listFavorites list__favorites">
       </ul>
-      <button type="button" id="btnReset" class=" js-reset favorites__section--reset">Reset</button>
+      <button type="button" id="btnReset" class=" js-reset button__reset">Reset</button>
     </section>
     
     </main>

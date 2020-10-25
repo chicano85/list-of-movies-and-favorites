@@ -12,8 +12,8 @@
 
 .title {
   color: white;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
+  font-family: initial;
+  font-size: 50px;
 }
 
 .form {
@@ -28,45 +28,51 @@
   height: 100vh;
   display: flex;
   align-content: space-between;
-  background: linear-gradient(to bottom, rgb(0, 238, 255), white);
+  background: linear-gradient(to bottom, rgb(3, 57, 61), white);
 }
 
-.buttonSearch {
+.button__search {
   padding: 10px;
   background-color: white;
-  color: #3341ff;
-  border-color: #3341ff;
+  color: cadetblue;
+  border-color: cadetblue;
 }
 
 .input__search {
   padding: 10px;
 }
 
+.favorites__section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .subtitle {
-  color: #3341ff;
+  color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.favorites__section--reset {
+.button__reset {
   padding: 10px;
+  margin-top: 10px;
 }
 
-.list__show {
+.list__shows {
   margin: 20px;
   display: flex;
   flex-wrap: wrap;
+  color: rgb(8, 48, 44);
 }
 
 /* JavaScript */
 
-.favoriteColor {
-  background-color: aqua;
+.fav__show {
+  border: turquoise 2px solid;
 }
 
 .listShow__item {
   margin: 90px 10px 0 10px;
 }
-
-.fav__show {
-  border: red 2px solid;
+.list__favorites {
+  color: rgb(8, 48, 44);
 }
