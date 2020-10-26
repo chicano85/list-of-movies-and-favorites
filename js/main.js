@@ -37,16 +37,22 @@ getData();
 function paintShows() {
   let showContent = "";
   for (let i = 0; i < shows.length; i++) {
-    /*  let classFav;
-    const indexClass = shows.find((click) => {
-      if (parseInt(click.show.id) === shows[i].show.id) return click;
+    let classFav;
+    const indexClass = favorites.findIndex((fav) => {
+      if (fav.show.id === shows[i].show.id) {
+        return true;
+      } else {
+        return false;
+      }
     });
-    if (indexClass === false) {
-      classFav = "favoriteColor";
+
+    if (indexClass !== -1) {
+      classFav = "fav__show";
     } else {
       classFav = "";
-    } */
-    showContent += `<li class="js-itemShow list__Shows--item" id="${shows[i].show.id}">`;
+    }
+
+    showContent += `<li class="js-itemShow list__Shows--item ${classFav}" id="${shows[i].show.id}">`;
     if (shows[i].show.image !== null) {
       let image = shows[i].show.image.medium;
       showContent += `<img src="${image}" alt="image show" title="image show" />`;
@@ -64,6 +70,7 @@ function paintShows() {
 
 function addFavorites(ev) {
   const clicked = parseInt(ev.currentTarget.id);
+
   const indexFav = favorites.findIndex((click) => {
     if (parseInt(click.show.id) === clicked) return click;
   });
@@ -117,7 +124,7 @@ function paintFavorites() {
   const favList = document.querySelector(".js-listFavorites");
   let favContent = "";
   for (let i = 0; i < favorites.length; i++) {
-    favContent += `<li class="js-itemShow list__Shows--item fav__show" id="${favorites[i].show.id}">`;
+    favContent += `<li class="js-itemShow list__Shows--item " id="${favorites[i].show.id}">`;
     if (favorites[i].show.image !== null) {
       let image = favorites[i].show.image.medium;
       favContent += `<img src="${image}" alt="image show" title="image show" />`;
@@ -126,6 +133,7 @@ function paintFavorites() {
       showContent += `<img src="${image}" alt="image show" title="image show" />`;
     }
     favContent += `<h2>${favorites[i].show.name}</h2>`;
+
     favContent += "</li>";
   }
   favList.innerHTML = favContent;
@@ -161,26 +169,9 @@ const getLocalStorage = () => {
 
 getLocalStorage();
 
-/* function setLocalStorage() {
-  const hola = JSON.stringify(favorites);
-  localStorage.setItem("LocalFavorites", hola);
-}
-
-// Traer datos
-
-function getLocalStorage() {
-  favorites = JSON.parse(localStorage.getItem("localfavorites"));
-  if (favorites === null) {
-    favorites = [];
-  }
-  paintShows();
-  paintFavorites();
-}
-getLocalStorage(); */
-
 // Reset
 
-function resetFav() {
+/* function resetFav() {
   favorites.splice(1, favorites.length);
   favorites = [];
   localStorage.clear();
@@ -188,19 +179,21 @@ function resetFav() {
 }
 
 function resetItemFavorites(ev) {
-  favorites.splice(indexItemFav, 1);
+  /* favorites.splice(indexItemFav, 1);
   paintFavorites();
+  setLocalStorage(); */
+/*   paintFavorites();
   setLocalStorage();
 }
 resetItemFavorites();
 
 resetBtn.addEventListener("click", resetFav);
 
-function trashFav() {
+function trashItem() {
   const resetItems = document.querySelectorAll(".js-reset-items");
-  console.log(resetItems);
+  // console.log(resetItems);
   for (const resetItem of resetItems) {
-    console.log(resetItem);
     resetItem.addEventListener("click", resetItemFavorites);
   }
 }
+ */

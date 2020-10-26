@@ -20,10 +20,6 @@
   padding: 30px;
 }
 
-.favorites__section {
-  padding: 25px;
-}
-
 .main {
   height: 100vh;
   display: flex;
@@ -46,9 +42,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  order: -1;
+  margin: 100px 0 0 20px;
 }
 .subtitle {
   color: white;
+  text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -70,8 +69,8 @@
   border: turquoise 2px solid;
 }
 
-.listShow__item {
-  margin: 90px 10px 0 10px;
+.list__Shows--item {
+  margin: 0px 10px 0 10px;
 }
 .list__favorites {
   color: rgb(8, 48, 44);
