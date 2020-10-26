@@ -90,34 +90,6 @@ function addFavorites(ev) {
   setLocalStorage();
 }
 
-/* function addFavorites(ev) {
-  console.log(ev.currentTarget);
-  const clicked = parseInt(ev.currentTarget.id);
-  const indexFav = favorites.indexOf(clicked);
-  const isFavorite = indexFav !== -1;
-  console.log(isFavorite);
-
-  if (isFavorite === false) {
-    for (const item of shows) {
-      console.log(clicked);
-      if (parseInt(item.show.id) === clicked) {
-        favorites.push(item);
-        console.log(favorites);
-      }
-    }
-  } else {
-    const index = favorites.findIndex((click) => {
-      if (parseInt(item.show.id) === clicked) {
-        return click;
-      }
-    });
-    favorites.splice(index, 1);
-  }
-  paintShows();
-  //paintFavorites();
-  listenShows();
-} */
-
 // Pintar favoritos
 
 function paintFavorites() {
@@ -171,29 +143,14 @@ getLocalStorage();
 
 // Reset
 
-/* function resetFav() {
-  favorites.splice(1, favorites.length);
+function deleteFav(ev) {
   favorites = [];
   localStorage.clear();
+
+  ev.preventDefault();
+
   paintFavorites();
+  getData();
 }
 
-function resetItemFavorites(ev) {
-  /* favorites.splice(indexItemFav, 1);
-  paintFavorites();
-  setLocalStorage(); */
-/*   paintFavorites();
-  setLocalStorage();
-}
-resetItemFavorites();
-
-resetBtn.addEventListener("click", resetFav);
-
-function trashItem() {
-  const resetItems = document.querySelectorAll(".js-reset-items");
-  // console.log(resetItems);
-  for (const resetItem of resetItems) {
-    resetItem.addEventListener("click", resetItemFavorites);
-  }
-}
- */
+resetBtn.addEventListener("click", deleteFav);

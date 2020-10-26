@@ -70,8 +70,10 @@
 }
 
 .list__Shows--item {
-  margin: 0px 10px 0 10px;
+  margin: 10px 10px 10px 10px;
+  background-color: white;
 }
 .list__favorites {
+  margin: 10px 10px 10px 10px;
   color: rgb(8, 48, 44);
 }
