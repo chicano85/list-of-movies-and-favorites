@@ -23,14 +23,12 @@ function getData() {
     .then(function (data) {
       shows = data;
       paintShows();
-      listenShows();
       paintFavorites();
+      listenShows();
     });
 }
 
 btnSearch.addEventListener("click", getData);
-
-getData();
 
 // Pintar las series en el HTML
 
@@ -69,6 +67,7 @@ function paintShows() {
 // Añadir favoritos
 
 function addFavorites(ev) {
+  debugger;
   const clicked = parseInt(ev.currentTarget.id);
 
   const indexFav = favorites.findIndex((click) => {
@@ -85,8 +84,8 @@ function addFavorites(ev) {
     favorites.splice(indexFav, 1);
   }
   paintShows();
-  listenShows();
   paintFavorites();
+  listenShows();
   setLocalStorage();
 }
 
@@ -96,7 +95,7 @@ function paintFavorites() {
   const favList = document.querySelector(".js-listFavorites");
   let favContent = "";
   for (let i = 0; i < favorites.length; i++) {
-    favContent += `<li class="js-itemShow list__Shows--item " id="${favorites[i].show.id}">`;
+    favContent += `<li class="list__Shows--item">`;
     if (favorites[i].show.image !== null) {
       let image = favorites[i].show.image.medium;
       favContent += `<img src="${image}" alt="image show" title="image show" />`;
@@ -105,6 +104,7 @@ function paintFavorites() {
       showContent += `<img src="${image}" alt="image show" title="image show" />`;
     }
     favContent += `<h2>${favorites[i].show.name}</h2>`;
+    favContent += `<button  class="js-itemShow" type="button"  id="${favorites[i].show.id}"> X </button>`;
 
     favContent += "</li>";
   }
@@ -136,21 +136,49 @@ const getLocalStorage = () => {
   if (localStorageFav !== null) {
     favorites = JSON.parse(localStorageFav);
     paintFavorites();
+    listenShows();
   }
 };
 
-getLocalStorage();
-
-// Reset
+// Reset todos los favoritos
 
 function deleteFav(ev) {
-  favorites = [];
-  localStorage.clear();
-
   ev.preventDefault();
-
+  favorites = [];
+  setLocalStorage();
   paintFavorites();
-  getData();
 }
 
 resetBtn.addEventListener("click", deleteFav);
+
+// Reset favoritos uno a uno
+
+/*function resetEachFav(ev) {
+  const removeFav = ev.currentTarget.id;
+  //favorites.splice(removeFav, 1);
+
+  paintFavorites();
+  listenFav();
+  paintShows();
+  setLocalStorage();
+}
+
+function listenFav() {
+  debugger;
+  const eachFavs = document.querySelectorAll(".js-itemShow");
+  for (const eachFav of eachFavs) {
+    eachFav.addEventListener("click", addFavorites);
+  }
+}
+
+function removeItem() {
+  const deleteItems = document.querySelectorAll(".js-btnEachDelete");
+  for (const deleteItem of deleteItems) {
+    deleteItem.addEventListener("click", resetEachFav);
+  }
+}*/
+
+// start app
+
+getLocalStorage();
+//removeItem();

@@ -12,18 +12,18 @@
 
 .title {
   color: white;
-  font-family: initial;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 50px;
 }
 
 .form {
-  margin: 30px;
+  margin: 30px 0 30px 30px;
 }
 
 .main {
   height: 100vh;
   display: flex;
-  align-content: space-between;
+
   background: linear-gradient(to bottom, rgb(3, 57, 61), white);
 }
 
@@ -43,12 +43,12 @@
   flex-direction: column;
   align-items: center;
 
-  margin: 30px 0 0 30px;
+  margin: 30px;
 }
 .subtitle {
   color: white;
-  text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
 }
 
 .button__reset {
@@ -70,10 +70,8 @@
 }
 
 .list__Shows--item {
-  margin: 10px 10px 10px 10px;
-  background-color: white;
+  margin: 30px 0px 0 10px;
 }
 .list__favorites {
-  margin: 10px 10px 10px 10px;
   color: rgb(8, 48, 44);
 }
